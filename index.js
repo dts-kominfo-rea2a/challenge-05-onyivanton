@@ -7,33 +7,36 @@ const names = ["Halo", "Angel", "Nyoman", "Ketut", "Aisyah"];
 // "2. Nama"
 // ...
 
-const sorter = function sortUtama(arrnama,fnCallbackSort){
+// const sorter = null;
+function sorter(arrnama,fnCallbackSort){
   let arrHasil=[]; 
-  for (let a=0;a<arrnama.length;a++){
-    arrHasil.push(a+"."+arrnama[a]);
+  const arrCallbak = fnCallbackSort(arrnama);
+  for (let a=0;a<arrCallbak.length;a++){
+    arrHasil.push(a+1 +"."+arrCallbak[a]);
   }
-  const arrHasils = fnCallbackSort(arrHasil);
-  return arrHasils;
+  return arrHasil;
 }
 
-
-// const sorter = sortUtama(names,urutkan);
 
 // TODO: Fungsi untuk mengurutkan array of string secara ascending
 // mengembalikan array yang sudah diurutkan
 // const sortAscending = null;
 
-const sortAscending = function urutkan(arrnya){
-  const arrsort= arrnya.sort;
+function sortAscending(arrnya){
+  const arrsort= arrnya.sort();
   return arrsort;
 }
+
 // TODO: Fungsi untuk mengurutkan array of string secara descending
 // mengembalikan array yang sudah diurutkan
 // const sortDescending = null;
-const sortDescending = function urutkan(arrnya){
-  const arrsort= arrnya.reverse;
-  return arrsort;
+function sortDescending(arrnya){
+  const arrDesc= arrnya.reverse();
+  return arrDesc;
 }
+
+
+
 // ! JANGAN DIMODIFIKASI
 (function main() {
   console.log(sorter?.(names, sortAscending)?.join("\n"));
@@ -46,3 +49,10 @@ module.exports = {
   sortDescending,
   names,
 };
+
+
+
+
+
+// console.log(sorter(names,sortAscending));
+// console.log(sorter(names,sortDescending));
